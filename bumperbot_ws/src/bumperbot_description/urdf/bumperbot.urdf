@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+
+<robot name="bumperbot">
+  <link name="base_footprint"/>
+  
+  <link name="base_link">
+    <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://bumperbot_description/meshes/base_link.STL"/>
+        </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+          <mesh filename="package://bumperbot_description/meshes/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.033"/>
+  </joint>
+  
+  <link name="wheel_right_link">
+    <visual>
+        <origin rpy="1.57 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://bumperbot_description/meshes/wheel_right_link.STL"/>
+        </geometry>
+    </visual>
+  </link>    
+  
+  <joint name="wheel_right_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 -0.07 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_right_link"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="wheel_left_link">
+    <visual>
+        <origin rpy="-1.57 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://bumperbot_description/meshes/wheel_left_link.STL"/>
+        </geometry>
+    </visual>
+  </link>
+
+  <joint name="wheel_left_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 0.07 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_left_link"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="caster_front_link">
+    <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://bumperbot_description/meshes/caster_front_link.STL"/>
+        </geometry>
+    </visual>
+  </link>
+
+  <joint name="caster_front_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0475 0 -0.0275"/>
+    <parent link="base_link"/>
+    <child link="caster_front_link"/>
+  </joint>
+
+  <link name="caster_rear_link">
+    <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://bumperbot_description/meshes/caster_rear_link.STL"/>
+        </geometry>
+    </visual>
+  </link>
+
+  <joint name="caster_rear_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.0475 0 -0.0275"/>
+    <parent link="base_link"/>
+    <child link="caster_rear_link"/>
+  </joint>
+
+  <link name="camera_link">
+    <visual>
+        <origin xyz="-0.03 0.03 0" rpy="1.57 0 0"/>
+        <geometry>
+            <mesh filename="package://bumperbot_description/meshes/camera_link.STL"/>
+        </geometry>
+    </visual>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+  </joint>
+
+</robot>

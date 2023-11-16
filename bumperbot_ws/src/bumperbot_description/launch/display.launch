@@ -1,0 +1,7 @@
+<launch>
+    <rosparam param="robot_description" file="$(find bumperbot_description)/urdf/bumperbot.urdf" command="load"/>
+    
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find bumperbot_description)/rviz/display.rviz" />
+  </launch>

@@ -1,0 +1,8 @@
+prefix=/home/marcio/estudos/udemy/self-driving/bumperbot_ws/install
+
+Name: bumperbot_examples
+Description: Description of bumperbot_examples
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
