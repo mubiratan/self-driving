@@ -3,3 +3,13 @@
 **/.catkin_workspace
 **/.vscode
 **.pyc
+backup/bumperbot.urdf
+files_download/bumperbot.urdf.xacro
+files_download/diff_drive_controller.yaml
+STL+Gazebo/STL Gazebo/base_link.STL
+STL+Gazebo/STL Gazebo/camera_link.STL
+STL+Gazebo/STL Gazebo/caster_front_link.STL
+STL+Gazebo/STL Gazebo/caster_rear_link.STL
+STL+Gazebo/STL Gazebo/imu_link.STL
+STL+Gazebo/STL Gazebo/wheel_left_link.STL
+STL+Gazebo/STL Gazebo/wheel_right_link.STL
