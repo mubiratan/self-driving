@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 
 <robot name="bumperbot" xmlns:xacro="http://ros.org/wiki/xacro">
-
   <xacro:include filename="$(find bumperbot_description)/urdf/bumperbot_gazebo.xacro"/>
-  
+
   <link name="base_footprint"/>
   
   <link name="base_link">
@@ -15,25 +14,25 @@
                izz="2.0064271e-02" />
     </inertial>
     <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="package://bumperbot_description/meshes/base_link.STL"/>
-        </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bumperbot_description/meshes/base_link.STL" />
+      </geometry>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-          <mesh filename="package://bumperbot_description/meshes/base_link.STL"/>
+        <mesh filename="package://bumperbot_description/meshes/base_link.STL" />
       </geometry>
     </collision>
   </link>
 
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
-    <child link="base_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0.033"/>
+    <child link="base_link" />
+    <origin xyz="0 0 0.033" rpy="0 0 0"/>
   </joint>
-  
+
   <link name="wheel_right_link">
     <inertial>
       <origin xyz="0 -0.014 0" rpy="0 0 0" />
@@ -43,27 +42,28 @@
                izz="1.8801969558182E-05" />
     </inertial>
     <visual>
-        <origin rpy="1.57 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="package://bumperbot_description/meshes/wheel_right_link.STL"/>
-        </geometry>
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
+      <geometry>
+        <mesh filename="package://bumperbot_description/meshes/wheel_right_link.STL" />
+      </geometry>
     </visual>
-    <collison>
-      <origin xyz="0 -0.015 0" rpy="1.57.0.0"/>
+    <collision>
+      <origin xyz="0 -0.015 0" rpy="1.57 0 0" />
       <geometry>
         <sphere radius="0.033"/>
       </geometry>
-    </collison>
-  </link>    
-  
-  <joint name="wheel_right_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0 -0.07 0"/>
-    <parent link="base_link"/>
-    <child link="wheel_right_link"/>
-    <axis xyz="0 1 0"/>
-  </joint>
+    </collision>
+  </link>
 
-  <link name="wheel_left_link">
+  <joint name="wheel_right_joint" type="continuous">
+    <origin xyz="0 -0.0701101849418637 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="wheel_right_link" />
+    <axis xyz="0 1 0" />
+  </joint>
+  
+  <link
+    name="wheel_left_link">
     <inertial>
       <origin xyz="0 0.014 0" rpy="0 0 0" />
       <mass value="0.0530086043217644" />
@@ -72,24 +72,24 @@
                izz="1.88266886146847E-05" />
     </inertial>
     <visual>
-        <origin rpy="-1.57 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="package://bumperbot_description/meshes/wheel_left_link.STL"/>
-        </geometry>
+      <origin xyz="0 0 0" rpy="-1.57 0 0" />
+      <geometry>
+        <mesh filename="package://bumperbot_description/meshes/wheel_left_link.STL" />
+      </geometry>
     </visual>
-    <collison>
-      <origin xyz="0 0.015 0" rpy="1.57 0 0"/>
+    <collision>
+      <origin xyz="0 0.015 0" rpy="-1.57 0 0" />
       <geometry>
         <sphere radius="0.033"/>
       </geometry>
-    </collison>
+    </collision>
   </link>
 
   <joint name="wheel_left_joint" type="continuous">
-    <origin rpy="0 0 0" xyz="0 0.07 0"/>
-    <parent link="base_link"/>
-    <child link="wheel_left_link"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="0 0.0701101849418642 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="wheel_left_link" />
+    <axis xyz="0 1 0" />
   </joint>
 
   <link name="caster_front_link">
@@ -101,25 +101,26 @@
                izz="1.00967486676306E-10" />
     </inertial>
     <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="package://bumperbot_description/meshes/caster_front_link.STL"/>
-        </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bumperbot_description/meshes/caster_front_link.STL" />
+      </geometry>
     </visual>
-    <collison>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <sphere radius="0.005"/>
       </geometry>
-    </collison>
+    </collision>
   </link>
 
   <joint name="caster_front_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.0475 0 -0.0275"/>
-    <parent link="base_link"/>
-    <child link="caster_front_link"/>
+    <origin xyz="0.04755 0 -0.0275" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="caster_front_link" />
+    <axis xyz="0 0 0" />
   </joint>
-
+  
   <link name="caster_rear_link">
     <inertial>
       <origin xyz="3.8996812895542E-07 2.40073004698083E-07 0.00219173397061509" rpy="0 0 0" />
@@ -129,38 +130,24 @@
                izz="1.00967486676306E-10" />
     </inertial>
     <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="package://bumperbot_description/meshes/caster_rear_link.STL"/>
-        </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://bumperbot_description/meshes/caster_rear_link.STL" />
+      </geometry>
     </visual>
-    <collison>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <sphere radius="0.005"/>
       </geometry>
-    </collison>
+    </collision>
   </link>
 
   <joint name="caster_rear_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.0475 0 -0.0275"/>
-    <parent link="base_link"/>
-    <child link="caster_rear_link"/>
-  </joint>
-
-  <link name="camera_link">
-    <visual>
-        <origin xyz="-0.03 0.03 0" rpy="1.57 0 0"/>
-        <geometry>
-            <mesh filename="package://bumperbot_description/meshes/camera_link.STL"/>
-        </geometry>
-    </visual>
-  </link>
-
-  <joint name="camera_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
-    <parent link="base_link"/>
-    <child link="camera_link"/>
+    <origin xyz="-0.04755 0 -0.0275" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="caster_rear_link" />
+    <axis xyz="0 0 0" />
   </joint>
 
 </robot>
