@@ -1,0 +1,13 @@
+1) roscore
+
+2) Excutar o turtlesim
+rosrun turtlesim turtlesim_node
+
+3) Excutar o segundo turtlesim
+rosservice call /spawn  -> dois tabs
+
+"x: 1.0
+y: 4.0
+theta: 0.0
+name: 'turtle2'" ^C
+
