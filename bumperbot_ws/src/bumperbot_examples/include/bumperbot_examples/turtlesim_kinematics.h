@@ -4,7 +4,6 @@
 #include <ros/ros.h>
 #include <turtlesim/Pose.h>
 
-
 class TurtlesimKinematics
 {
     public:

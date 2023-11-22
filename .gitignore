@@ -115,3 +115,11 @@ bumperbot_ws/build/catkin_generated/setup_cached.sh
 bumperbot_ws/build/catkin_generated/installspace/_setup_util.py
 bumperbot_ws/build/catkin_generated/stamps/Project/_setup_util.py.stamp
 .gitignore
+bumperbot_ws/build/atomic_configure/_setup_util.py
+bumperbot_ws/build/bumperbot_description/catkin_generated/installspace/bumperbot_descriptionConfig.cmake
+bumperbot_ws/build/bumperbot_examples/catkin_generated/installspace/bumperbot_examplesConfig.cmake
+bumperbot_ws/build/catkin_generated/generate_cached_setup.py
+bumperbot_ws/build/catkin_generated/order_packages.py
+bumperbot_ws/build/catkin_generated/setup_cached.sh
+bumperbot_ws/build/catkin_generated/installspace/_setup_util.py
+bumperbot_ws/build/catkin_generated/stamps/Project/_setup_util.py.stamp

@@ -3,7 +3,7 @@
 TurtlesimKinematics::TurtlesimKinematics()
 {
     turtle1_pose_sub = nh_.subscribe("/turtle1/pose", 1000, &TurtlesimKinematics::turtle1PoseCallBack, this);
-    turtle2_pose_sub = nh_.subscribe("/turtle2/pose", 1000, &TurtlesimKinematics::turtle1PoseCallBack, this);
+    turtle2_pose_sub = nh_.subscribe("/turtle2/pose", 1000, &TurtlesimKinematics::turtle2PoseCallBack, this);
 }
 
 void TurtlesimKinematics::turtle1PoseCallBack(const turtlesim::Pose& pose)
