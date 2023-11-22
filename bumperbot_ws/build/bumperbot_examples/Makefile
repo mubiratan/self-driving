@@ -56,17 +56,15 @@ CMAKE_BINARY_DIR = /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -101,15 +99,29 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
-.PHONY : list_install_components/fast
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
@@ -122,18 +134,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,6 +168,36 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/rule
+
+# Convenience name for target.
+turtlesim_kinematics: bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/rule
+
+.PHONY : turtlesim_kinematics
+
+# fast build rule for target.
+turtlesim_kinematics/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/build
+.PHONY : turtlesim_kinematics/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_py: bumperbot_examples/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+
+.PHONY : std_srvs_generate_messages_py
+
+# fast build rule for target.
+std_srvs_generate_messages_py/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_srvs_generate_messages_py.dir/build.make bumperbot_examples/CMakeFiles/std_srvs_generate_messages_py.dir/build
+.PHONY : std_srvs_generate_messages_py/fast
+
+# Convenience name for target.
 bumperbot_examples/CMakeFiles/simple_cpp_subscriber.dir/rule:
 	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/simple_cpp_subscriber.dir/rule
 .PHONY : bumperbot_examples/CMakeFiles/simple_cpp_subscriber.dir/rule
@@ -181,6 +211,201 @@ simple_cpp_subscriber: bumperbot_examples/CMakeFiles/simple_cpp_subscriber.dir/r
 simple_cpp_subscriber/fast:
 	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/simple_cpp_subscriber.dir/build.make bumperbot_examples/CMakeFiles/simple_cpp_subscriber.dir/build
 .PHONY : simple_cpp_subscriber/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/turtlesim_generate_messages_eus.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+turtlesim_generate_messages_eus: bumperbot_examples/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
+
+.PHONY : turtlesim_generate_messages_eus
+
+# fast build rule for target.
+turtlesim_generate_messages_eus/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_generate_messages_eus.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_generate_messages_eus.dir/build
+.PHONY : turtlesim_generate_messages_eus/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+turtlesim_generate_messages_lisp: bumperbot_examples/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule
+
+.PHONY : turtlesim_generate_messages_lisp
+
+# fast build rule for target.
+turtlesim_generate_messages_lisp/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_generate_messages_lisp.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_generate_messages_lisp.dir/build
+.PHONY : turtlesim_generate_messages_lisp/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_cpp: bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_cpp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_nodejs: bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+geometry_msgs_generate_messages_nodejs/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+turtlesim_generate_messages_nodejs: bumperbot_examples/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule
+
+.PHONY : turtlesim_generate_messages_nodejs
+
+# fast build rule for target.
+turtlesim_generate_messages_nodejs/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_generate_messages_nodejs.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_generate_messages_nodejs.dir/build
+.PHONY : turtlesim_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_nodejs: bumperbot_examples/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_srvs_generate_messages_nodejs
+
+# fast build rule for target.
+std_srvs_generate_messages_nodejs/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make bumperbot_examples/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
+.PHONY : std_srvs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/turtlesim_generate_messages_py.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/turtlesim_generate_messages_py.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/turtlesim_generate_messages_py.dir/rule
+
+# Convenience name for target.
+turtlesim_generate_messages_py: bumperbot_examples/CMakeFiles/turtlesim_generate_messages_py.dir/rule
+
+.PHONY : turtlesim_generate_messages_py
+
+# fast build rule for target.
+turtlesim_generate_messages_py/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_generate_messages_py.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_generate_messages_py.dir/build
+.PHONY : turtlesim_generate_messages_py/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/rule
+
+# Convenience name for target.
+turtlesim_kinematics_node: bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/rule
+
+.PHONY : turtlesim_kinematics_node
+
+# fast build rule for target.
+turtlesim_kinematics_node/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/build
+.PHONY : turtlesim_kinematics_node/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/turtlesim_generate_messages_cpp.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/turtlesim_generate_messages_cpp.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/turtlesim_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+turtlesim_generate_messages_cpp: bumperbot_examples/CMakeFiles/turtlesim_generate_messages_cpp.dir/rule
+
+.PHONY : turtlesim_generate_messages_cpp
+
+# fast build rule for target.
+turtlesim_generate_messages_cpp/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_generate_messages_cpp.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_generate_messages_cpp.dir/build
+.PHONY : turtlesim_generate_messages_cpp/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_eus: bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_eus
+
+# fast build rule for target.
+geometry_msgs_generate_messages_eus/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_lisp: bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_lisp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_lisp/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_py: bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_py
+
+# fast build rule for target.
+geometry_msgs_generate_messages_py/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make bumperbot_examples/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+bumperbot_examples/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_cpp: bumperbot_examples/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+
+.PHONY : std_srvs_generate_messages_cpp
+
+# fast build rule for target.
+std_srvs_generate_messages_cpp/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make bumperbot_examples/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
+.PHONY : std_srvs_generate_messages_cpp/fast
 
 # Convenience name for target.
 bumperbot_examples/CMakeFiles/simple_cpp_publisher.dir/rule:
@@ -198,229 +423,34 @@ simple_cpp_publisher/fast:
 .PHONY : simple_cpp_publisher/fast
 
 # Convenience name for target.
-bumperbot_examples/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+bumperbot_examples/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_py: bumperbot_examples/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+std_srvs_generate_messages_eus: bumperbot_examples/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
 
-.PHONY : std_msgs_generate_messages_py
+.PHONY : std_srvs_generate_messages_eus
 
 # fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_msgs_generate_messages_py.dir/build.make bumperbot_examples/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
+std_srvs_generate_messages_eus/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make bumperbot_examples/CMakeFiles/std_srvs_generate_messages_eus.dir/build
+.PHONY : std_srvs_generate_messages_eus/fast
 
 # Convenience name for target.
-bumperbot_examples/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+bumperbot_examples/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+.PHONY : bumperbot_examples/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_nodejs: bumperbot_examples/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+std_srvs_generate_messages_lisp: bumperbot_examples/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
 
-.PHONY : std_msgs_generate_messages_nodejs
+.PHONY : std_srvs_generate_messages_lisp
 
 # fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make bumperbot_examples/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: bumperbot_examples/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make bumperbot_examples/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_eus: bumperbot_examples/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/roscpp_generate_messages_eus.dir/build.make bumperbot_examples/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: bumperbot_examples/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make bumperbot_examples/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: bumperbot_examples/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/roscpp_generate_messages_py.dir/build.make bumperbot_examples/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: bumperbot_examples/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make bumperbot_examples/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_nodejs: bumperbot_examples/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-.PHONY : roscpp_generate_messages_nodejs
-
-# fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make bumperbot_examples/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: bumperbot_examples/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make bumperbot_examples/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: bumperbot_examples/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make bumperbot_examples/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make bumperbot_examples/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
+std_srvs_generate_messages_lisp/fast:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make bumperbot_examples/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
+.PHONY : std_srvs_generate_messages_lisp/fast
 
 nodes/simple_publisher.o: nodes/simple_publisher.cpp.o
 
@@ -476,42 +506,107 @@ nodes/simple_subscriber.cpp.s:
 	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/simple_cpp_subscriber.dir/build.make bumperbot_examples/CMakeFiles/simple_cpp_subscriber.dir/nodes/simple_subscriber.cpp.s
 .PHONY : nodes/simple_subscriber.cpp.s
 
+nodes/turtlesim_kinematics_node.o: nodes/turtlesim_kinematics_node.cpp.o
+
+.PHONY : nodes/turtlesim_kinematics_node.o
+
+# target to build an object file
+nodes/turtlesim_kinematics_node.cpp.o:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/nodes/turtlesim_kinematics_node.cpp.o
+.PHONY : nodes/turtlesim_kinematics_node.cpp.o
+
+nodes/turtlesim_kinematics_node.i: nodes/turtlesim_kinematics_node.cpp.i
+
+.PHONY : nodes/turtlesim_kinematics_node.i
+
+# target to preprocess a source file
+nodes/turtlesim_kinematics_node.cpp.i:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/nodes/turtlesim_kinematics_node.cpp.i
+.PHONY : nodes/turtlesim_kinematics_node.cpp.i
+
+nodes/turtlesim_kinematics_node.s: nodes/turtlesim_kinematics_node.cpp.s
+
+.PHONY : nodes/turtlesim_kinematics_node.s
+
+# target to generate assembly for a file
+nodes/turtlesim_kinematics_node.cpp.s:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/nodes/turtlesim_kinematics_node.cpp.s
+.PHONY : nodes/turtlesim_kinematics_node.cpp.s
+
+src/turtlesim_kinematics.o: src/turtlesim_kinematics.cpp.o
+
+.PHONY : src/turtlesim_kinematics.o
+
+# target to build an object file
+src/turtlesim_kinematics.cpp.o:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/src/turtlesim_kinematics.cpp.o
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/src/turtlesim_kinematics.cpp.o
+.PHONY : src/turtlesim_kinematics.cpp.o
+
+src/turtlesim_kinematics.i: src/turtlesim_kinematics.cpp.i
+
+.PHONY : src/turtlesim_kinematics.i
+
+# target to preprocess a source file
+src/turtlesim_kinematics.cpp.i:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/src/turtlesim_kinematics.cpp.i
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/src/turtlesim_kinematics.cpp.i
+.PHONY : src/turtlesim_kinematics.cpp.i
+
+src/turtlesim_kinematics.s: src/turtlesim_kinematics.cpp.s
+
+.PHONY : src/turtlesim_kinematics.s
+
+# target to generate assembly for a file
+src/turtlesim_kinematics.cpp.s:
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics.dir/src/turtlesim_kinematics.cpp.s
+	cd /home/marcio/estudos/udemy/self-driving/bumperbot_ws/build && $(MAKE) -f bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/build.make bumperbot_examples/CMakeFiles/turtlesim_kinematics_node.dir/src/turtlesim_kinematics.cpp.s
+.PHONY : src/turtlesim_kinematics.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/local"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... turtlesim_kinematics"
+	@echo "... std_srvs_generate_messages_py"
 	@echo "... simple_cpp_subscriber"
-	@echo "... simple_cpp_publisher"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... roscpp_generate_messages_eus"
-	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... list_install_components"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... install"
-	@echo "... std_msgs_generate_messages_eus"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... turtlesim_generate_messages_eus"
+	@echo "... turtlesim_generate_messages_lisp"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... install/strip"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... turtlesim_generate_messages_nodejs"
+	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... turtlesim_generate_messages_py"
+	@echo "... install/local"
+	@echo "... turtlesim_kinematics_node"
+	@echo "... turtlesim_generate_messages_cpp"
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... install"
+	@echo "... geometry_msgs_generate_messages_lisp"
+	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... std_srvs_generate_messages_cpp"
+	@echo "... simple_cpp_publisher"
+	@echo "... std_srvs_generate_messages_eus"
+	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... nodes/simple_publisher.o"
 	@echo "... nodes/simple_publisher.i"
 	@echo "... nodes/simple_publisher.s"
 	@echo "... nodes/simple_subscriber.o"
 	@echo "... nodes/simple_subscriber.i"
 	@echo "... nodes/simple_subscriber.s"
+	@echo "... nodes/turtlesim_kinematics_node.o"
+	@echo "... nodes/turtlesim_kinematics_node.i"
+	@echo "... nodes/turtlesim_kinematics_node.s"
+	@echo "... src/turtlesim_kinematics.o"
+	@echo "... src/turtlesim_kinematics.i"
+	@echo "... src/turtlesim_kinematics.s"
 .PHONY : help
 
 

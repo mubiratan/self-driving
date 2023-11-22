@@ -3,6 +3,6 @@ prefix=/home/marcio/estudos/udemy/self-driving/bumperbot_ws/install
 Name: bumperbot_examples
 Description: Description of bumperbot_examples
 Version: 0.0.0
-Cflags: 
+Cflags: -I${prefix}/include
 Libs: -L${prefix}/lib 
-Requires: 
+Requires: turtlesim

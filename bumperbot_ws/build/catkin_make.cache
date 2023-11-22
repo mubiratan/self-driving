@@ -1,2 +1,2 @@
-bumperbot_description:bumperbot_examples
+bumperbot_controller:bumperbot_description:bumperbot_examples
 -DCATKIN_DEVEL_PREFIX=/home/marcio/estudos/udemy/self-driving/bumperbot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/marcio/estudos/udemy/self-driving/bumperbot_ws/install -G Unix Makefiles

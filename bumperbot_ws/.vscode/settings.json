@@ -6,5 +6,6 @@
         "/opt/ros/noetic/lib/python3/dist-packages"
     ],
     "cmake.configureOnOpen": true,
-    "ros.distro": "noetic"
+    "ros.distro": "noetic",
+    "C_Cpp.errorSquiggles": "enabled"
 }

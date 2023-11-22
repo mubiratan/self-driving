@@ -132,6 +132,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/marcio/estudos/udemy/self-driving/bumperbot_ws/build/gtest/cmake_install.cmake")
   include("/home/marcio/estudos/udemy/self-driving/bumperbot_ws/build/bumperbot_description/cmake_install.cmake")
+  include("/home/marcio/estudos/udemy/self-driving/bumperbot_ws/build/bumperbot_controller/cmake_install.cmake")
   include("/home/marcio/estudos/udemy/self-driving/bumperbot_ws/build/bumperbot_examples/cmake_install.cmake")
 
 endif()
